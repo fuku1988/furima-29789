@@ -2,13 +2,16 @@
 
 ## users テーブル
 
-| Column     | Type   | Options     |
-| ---------- | ------ | ----------- |
-| nickname   | string | null: false |
-| name       | string | null: false |
-| email      | string | null: false |
-| password   | string | null: false |
-| birth date | string | null: false |
+| Column         | Type   | Options     |
+| -------------- | ------ | ----------- |
+| nickname       | string | null: false |
+| last_name      | string | null: false |
+| first_name     | string | null: false |
+| last_name_kana | string | null: false |
+| first_name_kana| string | null: false |
+| email          | string | null: false |
+| password       | string | null: false |
+| birth_date     | date   | null: false |
 
 ### Association
 - has_many :items
@@ -19,38 +22,43 @@
 
 | Column           | Type       | Options                        |
 | ---------------- | -----------| ------------------------------ |
-| users_id         | references | null: false, foreign_key: true |
-| image            | string     | null: false                    |
+| user             | references | null: false, foreign_key: true |
 | item_name        | string     | null: false                    |
-| item_description | string     | null: false                    |
-| items_category   | string     | null: false                    |
-| items_condition  | string     | null: false                    |
-| delivery_cost    | string     | null: false                    |
-| delivery_area    | string     | null: false                    |
-| delivery_time    | string     | null: false                    |
-| sales_price      | string     | null: false                    |
-| sales_commission | string     | null: false                    |
-| sales_profit     | string     | null: false                    |
+| item_description | text       | null: false                    |
+| item_category    | integer    | null: false                    |
+| item_condition   | integer    | null: false                    |
+| delivery_cost    | integer    | null: false                    |
+| delivery_area    | integer    | null: false                    |
+| delivery_time    | integer    | null: false                    |
+| sales_price      | integer    | null: false                    |
 
 ### Association
-- belongs_to :users
-- has_one :buys
+- belongs_to :user
+- has_one :buy
+- has_one_attached :image
 
 
 ## buys テーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | -----------| ------------------------------ |
-| users_id         | references | null: false, foreign_key: true |
-| items_id         | references | null: false, foreign_key: true |
-| image            | references | null: false, foreign_key: true |
-| item_name        | references | null: false, foreign_key: true |
-| item_description | references | null: false, foreign_key: true |
-| creditcard_number| string     | null: false                    |
-| expiration_date  | string     | null: false                    |
-| security_code    | string     | null: false                    |
+| user             | references | null: false, foreign_key: true |
+| item             | references | null: false, foreign_key: true |
+| sales_price      | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :item
+- belongs_to :user
+- has_one :address
+
+
+## address テーブル
+
+| Column           | Type       | Options                        |
+| ---------------- | -----------| ------------------------------ |
+| buy              | references | null: false, foreign_key: true |
 | postal code      | string     | null: false                    |
-| Prefecture       | string     | null: false                    |
+| Prefecture       | integer    | null: false                    |
 | city             | string     | null: false                    |
 | address          | string     | null: false                    |
 | building         | string     |                                |
@@ -58,8 +66,7 @@
 
 
 ### Association
-- belongs_to :items
-- belongs_to :users
+- belongs_to :buy
 
 
 ===
