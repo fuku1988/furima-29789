@@ -23,13 +23,13 @@
 | Column           | Type       | Options                        |
 | ---------------- | -----------| ------------------------------ |
 | user             | references | null: false, foreign_key: true |
-| item_name        | string     | null: false                    |
-| item_description | text       | null: false                    |
-| item_category    | integer    | null: false                    |
-| item_condition   | integer    | null: false                    |
-| delivery_cost    | integer    | null: false                    |
-| delivery_area    | integer    | null: false                    |
-| delivery_time    | integer    | null: false                    |
+| name             | string     | null: false                    |
+| description      | text       | null: false                    |
+| category_id      | integer    | null: false                    |
+| condition_id     | integer    | null: false                    |
+| delivery_cost_id | integer    | null: false                    |
+| delivery_area_id | integer    | null: false                    |
+| delivery_time_id | integer    | null: false                    |
 | sales_price      | integer    | null: false                    |
 
 ### Association
@@ -44,7 +44,6 @@
 | ---------------- | -----------| ------------------------------ |
 | user             | references | null: false, foreign_key: true |
 | item             | references | null: false, foreign_key: true |
-| sales_price      | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :item
@@ -54,15 +53,15 @@
 
 ## address テーブル
 
-| Column           | Type       | Options                        |
-| ---------------- | -----------| ------------------------------ |
-| buy              | references | null: false, foreign_key: true |
-| postal code      | string     | null: false                    |
-| Prefecture       | integer    | null: false                    |
-| city             | string     | null: false                    |
-| address          | string     | null: false                    |
-| building         | string     |                                |
-| phon_number      | string     | null: false                    |
+| Column         | Type       | Options                        |
+| -------------- | -----------| ------------------------------ |
+| buy            | references | null: false, foreign_key: true |
+| postal code    | string     | null: false                    |
+| prefecture_id  | integer    | null: false                    |
+| city           | string     | null: false                    |
+| address        | string     | null: false                    |
+| building       | string     |                                |
+| phon_number    | string     | null: false                    |
 
 
 ### Association
