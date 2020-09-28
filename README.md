@@ -56,7 +56,7 @@
 | Column         | Type       | Options                        |
 | -------------- | -----------| ------------------------------ |
 | buy            | references | null: false, foreign_key: true |
-| postal code    | string     | null: false                    |
+| postal_code    | string     | null: false                    |
 | prefecture_id  | integer    | null: false                    |
 | city           | string     | null: false                    |
 | address        | string     | null: false                    |
