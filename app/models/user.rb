@@ -7,13 +7,13 @@ class User < ApplicationRecord
   has_many :items
   has_many :buys
 
-  validates :name, presence: true
+  validates :password, presence: true
   validates :email, presence: true
   validates :nickname, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :last_name_kana, presence: true
   validates :first_name_kana, presence: true
-  validates :birth_day,presence: true
+  validates :birth_date,presence: true
 
 end
