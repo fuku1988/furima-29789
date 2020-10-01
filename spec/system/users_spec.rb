@@ -25,6 +25,7 @@ RSpec.describe "Users", type: :system do
         expect(page).to have_no_content('新規登録')
         expect(page).to have_no_content('ログイン')
       end
+    end
 
     context "ログインできないとき" do
       it "保存されているユーザーの情報と合致しないとログインできない" do
@@ -43,4 +44,5 @@ RSpec.describe "Users", type: :system do
         expect(current_path).to eq new_user_session_path
       end
     end
+  end
 end

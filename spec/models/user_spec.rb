@@ -44,6 +44,66 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("First name kana can't be blank")
       end
+      it "名前の名のアルファベットを入力した場合登録できない" do
+        @user.last_name = "aaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name is invalid")
+      end
+      it "名前の姓にアルファベットを入力した場合登録できない" do
+        @user.first_name = "aaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name is invalid")
+      end
+      it "名前の名に数字を入力した場合登録できない" do
+        @user.last_name = "123"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name is invalid")
+      end
+      it "名前の姓に数字を入力した場合登録できない" do
+        @user.first_name = "123"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name is invalid")
+      end
+      it "名前の名のカナにアルファベットを入力した場合登録できない" do
+        @user.last_name_kana = "AAA"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name kana is invalid")
+      end
+      it "名前の姓のカナにアルファベットを入力した場合登録できない" do
+        @user.first_name_kana = "aaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name kana is invalid")
+      end
+      it "名前の名のカナに漢字を入力した場合登録できない" do
+        @user.last_name_kana = "山田"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name kana is invalid")
+      end
+      it "名前の姓のカナに漢字を入力した場合登録できない" do
+        @user.first_name_kana = "太郎"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name kana is invalid")
+      end
+      it "名前の名のカナに数字を入力した場合登録できない" do
+        @user.last_name_kana = "123"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name kana is invalid")
+      end
+      it "名前の姓のカナに数字を入力した場合登録できない" do
+        @user.first_name_kana = "123"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name kana is invalid")
+      end
+      it "名前の名のカナに平仮名を入力した場合登録できない" do
+        @user.last_name_kana = "やまだ"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name kana is invalid")
+      end
+      it "名前の姓のカナに平仮名を入力した場合登録できない" do
+        @user.first_name_kana = "たろう"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name kana is invalid")
+      end
       it "emailが空だと登録できない" do
         @user.email = nil
         @user.valid?
