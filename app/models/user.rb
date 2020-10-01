@@ -7,8 +7,10 @@ class User < ApplicationRecord
   has_many :items
   has_many :buys
 
-  validates :password, presence: true
-  validates :email, presence: true
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, {presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }}
+  VALID_PASSWORD_REGEX = /[a-z\d]{6,}/i
+  validates :password, {presence: true, format: { with: VALID_PASSWORD_REGEX }}
   validates :nickname, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
