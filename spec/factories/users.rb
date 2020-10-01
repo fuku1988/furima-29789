@@ -4,7 +4,6 @@ FactoryBot.define do
       person { Gimei.name }
     end
     last_name               { person.last.kanji}
-  # last_name               { person.last.hiragana}
     first_name              { person.first.kanji}
     last_name_kana          { person.last.katakana}
     first_name_kana         { person.first.katakana}
