@@ -10,9 +10,9 @@ RSpec.describe User, type: :model do
       it "nicknameとemail,passwordとpassword_confirmation,last_name,first_name,last_name_kana,first_name_kana,birth_dataが存在すれば登録できること" do
         expect(@user).to be_valid
       end
-      it "passwordが6文字以上であれば登録できる" do
-        @user.password = "000000"
-        @user.password_confirmation = "000000"
+      it "passwordが英数字6文以上であれば登録できる" do
+        @user.password = "Abc123"
+        @user.password_confirmation = "Abc123"
         @user.valid?
         expect(@user).to be_valid
       end
@@ -116,7 +116,7 @@ RSpec.describe User, type: :model do
         another_user.valid?
         expect(another_user.errors.full_messages).to include("Email has already been taken")
       end
-      it "emailに@が含まれていること" do
+      it "emailに@が含まれていないこと" do
         @user.email = "aaaaaaaa"
         @user.valid?
         expect(@user.errors.full_messages).to include("Email is invalid")
