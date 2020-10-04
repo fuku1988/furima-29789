@@ -1,14 +1,17 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
-    validates :category
-
   belongs_to_active_hash :condition
-    validates :condition
+  belongs_to_active_hash :delivery_cost
+  
+  validates :category
+  validates :condition
+  validates :delivery_cost
 
   with options numericality: { other_then: 1 }
     validates :category_id
     validates :condition_id
+    validates :delivery_cost
   end
    
   belongs_to :user
