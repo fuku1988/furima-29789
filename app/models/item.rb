@@ -4,17 +4,20 @@ class Item < ApplicationRecord
   belongs_to_active_hash :condition
   belongs_to_active_hash :delivery_cost
   belongs_to_active_hash :delivery_area
+  belongs_to_active_hash :delivery_time
   
   validates :category
   validates :condition
   validates :delivery_cost
   validates :delivery_area
+  validates :delivery_time
 
   with options numericality: { other_then: 1 }
     validates :category_id
     validates :condition_id
     validates :delivery_cost_id
     validates :delivery_area_id
+    validates :delivery_time_id
   end
    
   belongs_to :user
