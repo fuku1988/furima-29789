@@ -9,27 +9,21 @@ class Item < ApplicationRecord
   belongs_to_active_hash :delivery_area
   belongs_to_active_hash :delivery_time
 
-  with options presence: true do
-    validetes :image
+  with_options presence: true do
+    validates :image
+    validates :name
     validates :description
-    validates :category_id
-    validates :condition_id
-    validates :delivery_cost_id
-    validates :delivery_area_id
-    validates :delivery_time_id
-    validetes :name_id
+    validates :sales_price , format: { with: /\A[0-9]+\z/, message: "is invalid. Input half-width characters." }
   end
 
-  with options numericality: { other_then: 1 } do
+  with_options numericality: { other_than: 1, message: "can't be blank." } do
     validates :category_id
     validates :condition_id
     validates :delivery_cost_id
     validates :delivery_area_id
     validates :delivery_time_id
   end
+
+  validates :sales_price, numericality: { only_integer: true, greater_than_or_equal: 300, less_than_or_equal_to: 9999999,message: "is out of setting range" } 
   
-  with_option presence: true ,format: { with: /\A[0-9]+\z/ } do
-    validates :seles_price
-  end
-
 end
