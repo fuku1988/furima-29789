@@ -36,6 +36,11 @@
 - belongs_to :user
 - has_one :buy
 - has_one_attached :image
+- belongs_to_active_hash :category
+- belongs_to_active_hash :condition
+- belongs_to_active_hash :delivery_cost
+- belongs_to_active_hash :delivery_area
+- belongs_to_active_hash :delivery_time
 
 
 ## buys テーブル
