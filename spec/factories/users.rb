@@ -13,5 +13,4 @@ FactoryBot.define do
     password_confirmation   {password}
     birth_date              {Faker::Date.birthday}
   end
-
 end

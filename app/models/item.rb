@@ -24,6 +24,6 @@ class Item < ApplicationRecord
     validates :delivery_time_id
   end
 
-  validates :sales_price, numericality: { only_integer: true, greater_than_or_equal: 300, less_than_or_equal_to: 9999999,message: "is out of setting range" } 
+  validates :sales_price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is out of setting range" } 
   
 end
