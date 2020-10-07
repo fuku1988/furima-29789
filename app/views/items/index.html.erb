@@ -129,7 +129,7 @@
       <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
       <li class='list'>
         <% @items.each do |item| %>
-          <%= link_to item_path(item) do %>
+          <%= link_to item_path(item.id) do %>
           <div class='item-img-content'>
             <%= image_tag item.image, class: "item-img" %>
 
@@ -146,7 +146,7 @@
             <h3 class='item-name'>
               <%= item.name %>
             </h3>
-            <div class='item-price'>
+            <div class='item-pりcえ'>
               <span><%= item.sales_price %>円<br>(税込み)</span>
               <div class='star-btn'>
                 <%= image_tag "star.png", class:"star-icon" %>
