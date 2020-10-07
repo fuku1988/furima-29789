@@ -19,6 +19,8 @@ class ItemsController < ApplicationController
   end
 
   def show
+   #@items = Item.all
+   @nickname = current_user.nickname
   end
 
   private
