@@ -43,7 +43,7 @@
 - belongs_to_active_hash :delivery_time
 
 
-## buys テーブル
+## orders テーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | -----------| ------------------------------ |
