@@ -1,8 +1,9 @@
 class OrdersController < ApplicationController
 
   def index
-    @item = Item.new
-    redirect_to items_path unless user_signed_in?
+    @order = Order.new
+    @item = Item.find(params[:item_id])
+    redirect_to root_path unless user_signed_in?
   end
-
+  
 end
