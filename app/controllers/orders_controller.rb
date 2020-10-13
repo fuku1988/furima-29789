@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
   private
   
   def order_params
-    params.permit(:order)
+    params.permit(:order).merge(token: params[:token])
   end
 
 end
