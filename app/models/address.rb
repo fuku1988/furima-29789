@@ -1,5 +1,5 @@
 class Address < ApplicationRecord
-  extend ActiveHush::Associations::ActiveRecordExtensions
+  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
   belongs_to :order
 
