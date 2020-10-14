@@ -11,7 +11,6 @@ class OrdersController < ApplicationController
     @item = Item.find(params[:item_id])
     @order = Order.new
     @transactions = Transactions.new(transactions_params)
-    #binding.pry
     if @transactions.valid?
       @transactions.save
       pay_item
