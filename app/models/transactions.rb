@@ -16,8 +16,8 @@ class Transactions
     validates :prefecture_id
   end
 
-  validates :postal_code,format:{with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
-  validates :phone_number,format:{with: /\A[0-9]{11}\z/, message: "hyphen(-) unnecessary"}
+  validates :postal_code,format: { with: /\A[0-9]{3}-[0-9]{4}\z/ }
+  validates :phone_number,format: {with:  /\A[0-9]{9,11}\z/ }
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
