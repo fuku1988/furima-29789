@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
       render action: :new
     end
   end
-  
+
   def update
     if @item.update(items_params)
       redirect_to action: :show
