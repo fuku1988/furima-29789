@@ -29,11 +29,15 @@ class OrdersController < ApplicationController
 
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
-    Payjp::Charge.create(
-      amount:@item.sales_price,
-      card: params[:token],
-      currency: 'jpy'
-    )
+    if params[:token].blank?
+      redirect_to item_order_path
+    else
+      Payjp::Charge.create(
+        amount:@item.sales_price,
+        card: params[:token],
+        currency: 'jpy'
+      )
+    end
   end
 
   def set_item
@@ -41,7 +45,7 @@ class OrdersController < ApplicationController
   end
 
   def move_to_root
-    if user_signed_in? && current_user.id == @item.user_id
+    if user_signed_in? && current_user.id == @item.user_id || @item.order != nil
       redirect_to root_path 
     end
   end
