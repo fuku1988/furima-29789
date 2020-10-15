@@ -1,14 +1,15 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!, only: [:index]
+  before_action :set_item, only: [:index, :create]
+  before_action :move_to_root, only: [:index, :create]
+
 
   def index
     @order = Order.new
-    @item = Item.find(params[:item_id])
     @transactions = Transactions.new
-    redirect_to root_path unless authenticate_user!
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @order = Order.new
     @transactions = Transactions.new(transactions_params)
     if @transactions.valid?
@@ -33,6 +34,16 @@ class OrdersController < ApplicationController
       card: params[:token],
       currency: 'jpy'
     )
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+
+  def move_to_root
+    if user_signed_in? && current_user.id == @item.user_id
+      redirect_to root_path 
+    end
   end
 
 end
