@@ -29,15 +29,11 @@ class OrdersController < ApplicationController
 
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
-    if params[:token].blank?
-      redirect_to item_order_path
-    else
       Payjp::Charge.create(
         amount:@item.sales_price,
         card: params[:token],
         currency: 'jpy'
       )
-    end
   end
 
   def set_item
