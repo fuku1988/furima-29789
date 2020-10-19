@@ -131,7 +131,7 @@
         <% @items.each do |item| %>
           <%= link_to item_path(item.id) do %>
           <div class='item-img-content'>
-            <%= image_tag item.image, class: "item-img" %>
+             <%= image_tag item.images.first, class: "item-img" %>
 
             <%# 商品が売れていればsold outを表示しましょう %>
             <% if item.order != nil %>
