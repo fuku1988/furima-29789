@@ -12,7 +12,7 @@ class Transactions
   end
 
 
-  with_options numericality: { other_than: 1, message: "can't be blank." } do
+  with_options numericality: { other_than: 1, message: " --- 以外を洗濯してください" } do
     validates :prefecture_id
   end
 
