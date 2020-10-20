@@ -2,7 +2,7 @@ require 'rails_helper'
   
 RSpec.describe Item, type: :model do
   before do 
-    @item =FactoryBot.build(:item)
+    @item = FactoryBot.build(:item)
   end
 
   describe "商品登録" do
@@ -22,13 +22,16 @@ RSpec.describe Item, type: :model do
         @item.sales_price = 11111
         expect(@item).to be_valid
       end
+      it "画像を複数枚投稿しても登録できる" do
+        expect(FactoryBot.build(:item, :more_images)).to be_valid
+      end
     end
 
     context "商品が登録されない場合" do
       it "商品画像が存在しないと登録できない" do
-        @item.image = nil
+        @item.images = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Image can't be blank")
+        expect(@item.errors.full_messages).to include("Images can't be blank")
       end
       it "商品名が存在しないと登録できない" do
         @item.name = ""
