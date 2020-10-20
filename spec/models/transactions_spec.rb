@@ -39,6 +39,10 @@ RSpec.describe Transactions, type: :model do
         expect(@transactions.errors.full_messages).to include("Token can't be blank")
       end
       it "配送先の郵便番号が入力されていない場合" do
+        @transactions.postal_code = ""
+        @transactions.valid?
+        expect(@transactions.errors.full_messages).to include("Postal code is invalid")
+      end
       end
       it "配送先の郵便番号にハイフンがない場合" do
         @transactions.postal_code = "1111111"
